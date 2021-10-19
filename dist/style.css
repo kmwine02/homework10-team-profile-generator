@@ -3,6 +3,10 @@ header {
     margin-bottom: 20px;
 }
 
+h4 {
+    color: #696969;
+}
+
 .card-header {
     background-color: #e59557;
 }
