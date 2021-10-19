@@ -1,32 +1,7 @@
 const fs = require("fs");
 
-const mockTeam = [
-  {
-    role: "Manager",
-    name: "Katie",
-    id: "01",
-    email: "manager@email.com",
-    officeNumber: "999-999-9999"
-  },
-  {
-    role: "Engineer",
-    name: "Steven",
-    id: "02",
-    email: "engineer@email.com",
-    github: "github username"
-  },
-  {
-    role: "Intern",
-    name: "Nick",
-    id: "03",
-    email: "intern@email.com",
-    school: "unc chapel hill"
-  }
-]
-generateHTML(mockTeam);
-
-const generateTeam = mockTeam => {
-  return mockTeam.map(employee => {
+const generateTeam = (team) => {
+  return team.map((employee) => {
     if (employee.role === "Manager") {
       return `            
       <div class="col">
@@ -43,9 +18,8 @@ const generateTeam = mockTeam => {
           </ul>
         </div>
       </div>
-    </div>`
-    }
-    else if (employee.role === "Engineer") {
+    </div>`;
+    } else if (employee.role === "Engineer") {
       return `
       <div class="col">
                 <div class="card">
@@ -57,13 +31,14 @@ const generateTeam = mockTeam => {
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">ID: ${employee.id}</li>
                       <li class="list-group-item">Email: ${employee.email}</li>
-                      <li class="list-group-item">GitHub: ${employee.github}</li>
+                      <li class="list-group-item">
+                      <a href="https://github.com/${employee.githubUsername}">GitHub: ${employee.githubUsername}</a>
+                      </li>
                     </ul>
                   </div>
                 </div>
-              </div>`
-    }
-    else if (employee.role === "Intern") {
+              </div>`;
+    } else if (employee.role === "Intern") {
       return `
       <div class="col">
       <div class="card">
@@ -80,13 +55,13 @@ const generateTeam = mockTeam => {
         </div>
       </div>
     </div>
-    `
+    `;
     }
-  }) 
-}
+  });
+};
 
-const generateHTML = team => {
-    return `<!DOCTYPE html>
+const generateHTML = (team) => {
+  return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -102,8 +77,20 @@ const generateHTML = team => {
         <title>Team Profile</title>
       </head>
       <body>
-      ${generateTeam(team)}
-      </body>
-      </html>`
+      <main>
+      <div class="container-fluid my-auto">
+        <h1 class="display-2 text-center text-dark">My Team</h1>
+      </div>
+      <div class="container">
+        <div class="d-flex flex-row flex-wrap justify-content-center">
+          <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+            ${generateTeam(team)}
+          </div>
+        </div>
+      </div>
+      </main>
+    </body>
+  </html>`;
 };
 
+module.exports = generateHTML;
