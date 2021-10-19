@@ -79,7 +79,7 @@ const addTeamMemberQuestion = [
 ]
 
 function init() {
-    inquirer.prompt(managerQuestions)
+    
 }
 
 init();

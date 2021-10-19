@@ -1,5 +1,90 @@
 const fs = require("fs");
 
+const mockTeam = [
+  {
+    role: "Manager",
+    name: "Katie",
+    id: "01",
+    email: "manager@email.com",
+    officeNumber: "999-999-9999"
+  },
+  {
+    role: "Engineer",
+    name: "Steven",
+    id: "02",
+    email: "engineer@email.com",
+    github: "github username"
+  },
+  {
+    role: "Intern",
+    name: "Nick",
+    id: "03",
+    email: "intern@email.com",
+    school: "unc chapel hill"
+  }
+]
+generateHTML(mockTeam);
+
+const generateTeam = mockTeam => {
+  return mockTeam.map(employee => {
+    if (employee.role === "Manager") {
+      return `            
+      <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3>${employee.name}</h3>
+          <h4>Manager</h4>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${employee.id}</li>
+            <li class="list-group-item">Email: ${employee.email}</li>
+            <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
+          </ul>
+        </div>
+      </div>
+    </div>`
+    }
+    else if (employee.role === "Engineer") {
+      return `
+      <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>${employee.name}</h3>
+                    <h4>Engineer</h4>
+                  </div>
+                  <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">ID: ${employee.id}</li>
+                      <li class="list-group-item">Email: ${employee.email}</li>
+                      <li class="list-group-item">GitHub: ${employee.github}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>`
+    }
+    else if (employee.role === "Intern") {
+      return `
+      <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3>${employee.name}</h3>
+          <h4>Intern</h4>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${employee.id}</li>
+            <li class="list-group-item">Email: ${employee.email}</li>
+            <li class="list-group-item">School: ${employee.school}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    `
+    }
+  }) 
+}
+
 const generateHTML = team => {
     return `<!DOCTYPE html>
     <html lang="en">
@@ -17,7 +102,8 @@ const generateHTML = team => {
         <title>Team Profile</title>
       </head>
       <body>
-      ${generateTeamMemebersHTML}
+      ${generateTeam(team)}
       </body>
       </html>`
-}
+};
+
