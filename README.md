@@ -1,5 +1,4 @@
 Homework 10 - Team Profile Generator 
-  [![License: None]()]()
   
  
 
@@ -23,7 +22,7 @@ Homework 10 - Team Profile Generator
   Repo instructions: Once all of the dependencies have been installed, run "node index.js" from the terminal and it will run you through prompts to enter information about your team. 
 
   ## License
-  This project is licensed under the None license.
+  This project doesn't have a license.
 
   ## Contributing 
   Contributing is not allowed at this time.
