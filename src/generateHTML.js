@@ -2,9 +2,9 @@ const fs = require("fs");
 
 const generateTeam = (team) => {
   return team.map((employee) => {
-    if (employee.role === "Manager") {
+    if (employee.getRole() === "Manager") {
       return `            
-      <div class="col">
+      <div class="col cols-1 cols-md-3 justify-content-center">
       <div class="card">
         <div class="card-header">
           <h3>${employee.name}</h3>
@@ -19,9 +19,9 @@ const generateTeam = (team) => {
         </div>
       </div>
     </div>`;
-    } else if (employee.role === "Engineer") {
+    } else if (employee.getRole() === "Engineer") {
       return `
-      <div class="col">
+      <div class="col cols-1 cols-md-3 justify-content-center">
                 <div class="card">
                   <div class="card-header">
                     <h3>${employee.name}</h3>
@@ -38,9 +38,9 @@ const generateTeam = (team) => {
                   </div>
                 </div>
               </div>`;
-    } else if (employee.role === "Intern") {
+    } else if (employee.getRole() === "Intern") {
       return `
-      <div class="col">
+      <div class="col cols-1 cols-md-3 justify-content-center">
       <div class="card">
         <div class="card-header">
           <h3>${employee.name}</h3>
@@ -57,7 +57,7 @@ const generateTeam = (team) => {
     </div>
     `;
     }
-  });
+  }).join("");
 };
 
 const generateHTML = (team) => {
@@ -78,12 +78,14 @@ const generateHTML = (team) => {
       </head>
       <body>
       <main>
+      <header>
       <div class="container-fluid my-auto">
         <h1 class="display-2 text-center text-dark">My Team</h1>
       </div>
+      </header>
       <div class="container">
         <div class="d-flex flex-row flex-wrap justify-content-center">
-          <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+          <div class="row">
             ${generateTeam(team)}
           </div>
         </div>

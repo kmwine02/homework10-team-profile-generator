@@ -27,7 +27,7 @@ const managerQuestions = [
     type: "input",
     name: "officeNumber",
     message: "Enter the manager's office number:",
-  },
+  }
 ];
 
 const engineerQuestions = [
@@ -50,7 +50,7 @@ const engineerQuestions = [
     type: "input",
     name: "githubUsername",
     message: "Enter the engineer's GitHub username:",
-  },
+  }
 ];
 
 const internQuestions = [
@@ -73,7 +73,7 @@ const internQuestions = [
     type: "input",
     name: "school",
     message: "Enter the intern's school:",
-  },
+  }
 ];
 
 const addTeamMemberQuestion = [
@@ -95,7 +95,6 @@ async function init() {
     managerDetails.officeNumber
   );
   employees.push(newManager);
-  console.log("after manager*****",employees);
   const addTeamMember = await inquirer.prompt(addTeamMemberQuestion);
   nextTeamMember(addTeamMember.teamMemberRole);
 }
@@ -112,7 +111,6 @@ const nextTeamMember = async role => {
     );
     const addTeamMember = await inquirer.prompt(addTeamMemberQuestion);
     employees.push(newEngineer);
-    console.log("After engineer*****",employees);
     nextTeamMember(addTeamMember.teamMemberRole);
   } else if (role === "Intern") {
     console.log("Please enter the intern's information:");
@@ -125,12 +123,11 @@ const nextTeamMember = async role => {
     );
     const addTeamMember = await inquirer.prompt(addTeamMemberQuestion);
     employees.push(newIntern);
-    console.log("after intern*****",employees);
     nextTeamMember(addTeamMember.teamMemberRole);
   } else {
     console.log("Your team dashboard is being created.");
     console.log(employees);
-    const data = await generateHTML(employees);
+    const data = generateHTML(employees);
     writeToFile(data);
   }
 }
@@ -146,22 +143,3 @@ function writeToFile(data) {
 }
 
 init();
-
-/**
- * How to use async / await
- *
- * In order to use 'await' you need to have an async function, something like this
- *
- * async function init() {
- *  // DO STUFF HERE
- * }
- *
- * Now that you have an async function you can use await within the function. Await
- * is basically saying, wait for this promise/async function to resolve/return.
- * .then means that you are waiting for a Promise to return, 'then' doing something else.
- *
- * To change from Promise.then to await
- *
- * let someResult = await 'Some Promise';
- * // DO SOMETHING WITH someResult
- */
