@@ -33,3 +33,7 @@ Homework 10 - Team Profile Generator
 
   ## Questions
   If you have any questions about the repo, reach out to me directly at katie.wine2@gmail.com. See more of my work at https://www.github.com/kmwine02
+
+  ## Links
+  A walk through video can be found here: https://drive.google.com/file/d/1utCJDFXnFMgzlYU0WHFptGRI0FqWIXQ0/view
+  The repo can be found here: https://github.com/kmwine02/homework10-team-profile-generator 
