@@ -126,7 +126,6 @@ const nextTeamMember = async role => {
     nextTeamMember(addTeamMember.teamMemberRole);
   } else {
     console.log("Your team dashboard is being created.");
-    console.log(employees);
     const data = generateHTML(employees);
     writeToFile(data);
   }

@@ -10,3 +10,11 @@ h4 {
 .card-header {
     background-color: #e59557;
 }
+
+.row {
+    flex: 0 0 1;
+}
+
+.card {
+    height: 100%;
+}
